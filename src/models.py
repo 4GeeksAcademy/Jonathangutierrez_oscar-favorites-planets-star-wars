@@ -14,11 +14,11 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
 
-    favorites = db.relationship('Favorite')
+    favorites = db.relationship('Favorite', backref='users')
 
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.id
 
     def serialize(self):
         return {
